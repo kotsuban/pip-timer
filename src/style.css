@@ -114,3 +114,15 @@ header {
   background-color: #000000;
   color: #ffffff;
 }
+
+@media (max-width: 375px) {
+  .switch-item {
+    padding: 4px 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .time {
+    font-size: 5rem;
+  }
+}
