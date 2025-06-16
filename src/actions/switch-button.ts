@@ -1,5 +1,5 @@
 import { INITIAL_TIME, Watch } from "../store";
-import { clearStopwatch } from "./clear-button";
+import { clearWatch } from "./clear-button";
 
 export function setupSwitchButton(watch: HTMLDivElement) {
   const { switchButtons, watchButton, timerButton } = getSwitchButtons();
@@ -14,7 +14,7 @@ export function setupSwitchButton(watch: HTMLDivElement) {
       e.target.classList.add("switch-active");
       Watch.mode = e.target.innerText;
 
-      clearStopwatch(watch);
+      clearWatch(watch);
 
       if (Watch.mode === "WATCH") handleStopwatch();
       if (Watch.mode === "TIMER") handleTimer();

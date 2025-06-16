@@ -2,7 +2,7 @@ import startIcon from "../icons/start.svg";
 
 import { Watch, INITIAL_TIME } from "../store";
 
-export function clearStopwatch(watch: HTMLDivElement) {
+export function clearWatch(watch: HTMLDivElement) {
   const playIcon = document.querySelector(".img-play") as HTMLImageElement;
 
   Watch.removeInterval();
@@ -27,6 +27,6 @@ export function setupClearWatchButton(watch: HTMLDivElement) {
   const clearButton = document.querySelector(".btn-clear") as HTMLButtonElement;
 
   clearButton.addEventListener("click", () => {
-    clearStopwatch(watch);
+    clearWatch(watch);
   });
 }
