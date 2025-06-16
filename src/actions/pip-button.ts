@@ -24,7 +24,7 @@ export function setupOpenWatchInPipModeButton(watch: HTMLDivElement) {
     const style = document.createElement("style");
 
     style.textContent =
-      ".time { color: rgb(12, 10, 9); font-size: 3rem; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-variant-numeric: tabular-nums; cursor: default; }";
+      ".time { font-family: system-ui; color: rgb(12, 10, 9); font-size: 3rem; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-variant-numeric: tabular-nums; cursor: default; }";
 
     return style;
   };
