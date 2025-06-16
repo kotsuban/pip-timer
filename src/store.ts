@@ -6,7 +6,7 @@ export let Watch = {
   startTime: 0,
   elapsedTime: 0,
   intervalId: 0,
-  intervalMs: 500,
+  intervalMs: 1000,
 
   addInterval(callback: () => void) {
     this.intervalId = setInterval(callback, this.intervalMs);
