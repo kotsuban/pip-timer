@@ -1,33 +1,9 @@
-import startIcon from "@/icons/start.svg";
+import { time } from "@/store";
 
-import { Watch } from "@/store";
-import { INITIAL_TIME } from "@/constants";
-
-export function clearWatch(watch: HTMLDivElement) {
-  const playIcon = document.querySelector("#img-play") as HTMLImageElement;
-
-  Watch.removeInterval();
-  Watch.resetWatch();
-
-  watch.textContent = INITIAL_TIME;
-  document.title = INITIAL_TIME;
-
-  playIcon.src = startIcon;
-
-  if (Watch.mode === "WATCH") {
-    watch.contentEditable = "false";
-    watch.style.cursor = "default";
-  }
-  if (Watch.mode === "TIMER") {
-    watch.contentEditable = "true";
-    watch.style.cursor = "pointer";
-  }
-}
-
-export function setupClearWatchButton(watch: HTMLDivElement) {
+export function setupClearTimeButton(timeEl: HTMLDivElement) {
   const clearButton = document.querySelector("#btn-clear") as HTMLButtonElement;
 
   clearButton.addEventListener("click", () => {
-    clearWatch(watch);
+    time.clear(timeEl);
   });
 }

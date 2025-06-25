@@ -1,6 +1,6 @@
 import styles from "@/main.module.css";
 
-export function setupOpenWatchInPipModeButton(watch: HTMLDivElement) {
+export function setupOpenTimeInPipModeButton(timeEl: HTMLDivElement) {
   const pipButton = document.querySelector("#btn-pip") as HTMLButtonElement;
 
   pipButton.addEventListener("click", async () => {
@@ -11,7 +11,7 @@ export function setupOpenWatchInPipModeButton(watch: HTMLDivElement) {
     const pipWindow = await getPipWindow();
 
     pipWindow.document.head.appendChild(getWatchStyle());
-    pipWindow.document.body.append(watch);
+    pipWindow.document.body.append(timeEl);
 
     returnWatchToDOM(pipWindow);
   });

@@ -3,10 +3,11 @@ import pipIcon from "@/icons/pip.svg";
 import startIcon from "@/icons/start.svg";
 import blackThemeIcon from "@/icons/black-theme.svg";
 
-import { setupOpenWatchInPipModeButton } from "@/actions/pip-button";
-import { setupClearWatchButton } from "@/actions/clear-button";
-import { setupPlayWatchButton } from "@/actions/play-button";
+import { setupOpenTimeInPipModeButton } from "@/actions/pip-button";
+import { setupClearTimeButton } from "@/actions/clear-button";
+import { setupPlayTimeButton } from "@/actions/play-button";
 import { setupSwitchButton } from "@/actions/switch-button";
+import { setupValidation } from "@/actions/validation";
 
 import styles from "@/main.module.css";
 
@@ -40,9 +41,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="${styles.time}" id="time">${INITIAL_TIME}</div>
 `;
 
-const watch = document.querySelector("#time") as HTMLDivElement;
+const timeEl = document.querySelector("#time") as HTMLDivElement;
 
-setupClearWatchButton(watch);
-setupPlayWatchButton(watch);
-setupSwitchButton(watch);
-setupOpenWatchInPipModeButton(watch);
+setupValidation(timeEl);
+setupClearTimeButton(timeEl);
+setupPlayTimeButton(timeEl);
+setupSwitchButton(timeEl);
+setupOpenTimeInPipModeButton(timeEl);
