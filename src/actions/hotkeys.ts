@@ -22,6 +22,7 @@ export function setupHotkeys(timeEl: HTMLDivElement) {
         break;
 
       case "KeyW":
+        e.preventDefault();
         watchButton.classList.add("switch-active");
         timerButton.classList.remove("switch-active");
         time.clear(timeEl);
@@ -37,6 +38,7 @@ export function setupHotkeys(timeEl: HTMLDivElement) {
         break;
 
       case "KeyX":
+        e.preventDefault();
         time.clear(timeEl);
         break;
 
