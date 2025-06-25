@@ -2,20 +2,8 @@ import { Watch } from "@/store";
 
 import stopIcon from "@/icons/stop.svg";
 import startIcon from "@/icons/start.svg";
-
-
-export function formatTime(ms: number) {
-  const totalSeconds = Math.floor(ms / ONE_SECOND);
-  const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
-  const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(
-    2,
-    "0",
-  );
-  const seconds = String(totalSeconds % 60).padStart(2, "0");
-
-  return `${hours}:${minutes}:${seconds}`;
-}
 import { ONE_SECOND } from "@/constants";
+import { convertMsToHHMMSS } from "@/utils/time";
 
 function hhmmssToMs(hhmmss: string) {
   const [seconds = 0, mins = 0, hours = 0] = hhmmss.split(":").reverse();
@@ -33,7 +21,7 @@ export function setupPlayWatchButton(watch: HTMLDivElement) {
   const updateWatch = () => {
     const now = Date.now();
     const diff = now - Watch.startTime + Watch.elapsedTime;
-    const time = formatTime(diff);
+    const time = convertMsToHHMMSS(diff);
     watch.textContent = time;
     document.title = time;
   };
@@ -41,7 +29,7 @@ export function setupPlayWatchButton(watch: HTMLDivElement) {
   const updateTimer = () => {
     Watch.startTime -= ONE_SECOND;
     if (Watch.startTime <= 0) stopWatch();
-    const time = formatTime(Watch.startTime);
+    const time = convertMsToHHMMSS(Watch.startTime);
     watch.textContent = time;
     document.title = time;
   };
