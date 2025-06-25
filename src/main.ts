@@ -1,4 +1,3 @@
-import "@/style.css";
 import clearIcon from "@/icons/clear.svg";
 import pipIcon from "@/icons/pip.svg";
 import startIcon from "@/icons/start.svg";
@@ -10,34 +9,37 @@ import { setupPlayWatchButton } from "@/actions/play-button";
 import { setupSwitchButton } from "@/actions/switch-button";
 
 import { INITIAL_TIME } from "@/store";
+import styles from "@/main.module.css";
+
+import "@/style.css";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <header>
-    <div class="btn-group">
-      <button class="btn-clear" title="Reset current time">
-        <img alt="stop" src=${clearIcon} width=20 height=20 />
+    <div class="${styles.btnGroup}">
+      <button id="btn-clear" aria-label="Reset current time">
+        <img alt="reset" src=${clearIcon} width=20 height=20 />
       </button>
-      <button class="btn-play" title="Play/Pause current time">
-        <img class="img-play" alt="stop" src=${startIcon} width=20 height=20 />
+      <button id="btn-play" aria-label="Play/Pause current time">
+        <img id="img-play" alt="play/pause" src=${startIcon} width=20 height=20 />
       </button>
     </div>
-    <div class="switch">
-      <button class="switch-item switch-active">WATCH</button>
-      <button class="switch-item">TIMER</button>
+    <div class="${styles.switch}">
+      <button class="${styles.switchItem} switch-active" id="switch-item">WATCH</button>
+      <button class="${styles.switchItem}" id="switch-item">TIMER</button>
     </div>
-    <div class="btn-group">
-      <button class="btn-pip" title="Picture in Picture mode">
-        <img alt="stop" src=${pipIcon} width=20 height=20 />
+    <div class="${styles.btnGroup}">
+      <button id="btn-pip" aria-label="Picture in Picture mode">
+        <img alt="pip mode" src=${pipIcon} width=20 height=20 />
       </button>
-      <button class="btn-theme" title="Toggle theme">
-        <img alt="stop" src=${blackThemeIcon} width=20 height=20 />
+      <button id="btn-theme" aria-label="Toggle theme">
+        <img alt="toggle theme" src=${blackThemeIcon} width=20 height=20 />
       </button>
     </div>
   </header>
-  <div class="time watch">${INITIAL_TIME}</div>
+  <div class="${styles.time}" id="time">${INITIAL_TIME}</div>
 `;
 
-const watch = document.querySelector(".watch") as HTMLDivElement;
+const watch = document.querySelector("#time") as HTMLDivElement;
 
 setupClearWatchButton(watch);
 setupPlayWatchButton(watch);

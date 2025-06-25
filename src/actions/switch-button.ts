@@ -57,7 +57,7 @@ export function setupSwitchButton(watch: HTMLDivElement) {
 
   function getSwitchButtons() {
     const switchButtons =
-      document.querySelectorAll<HTMLButtonElement>(".switch-item");
+      document.querySelectorAll<HTMLButtonElement>("#switch-item");
 
     const [watchButton, timerButton] = switchButtons;
 

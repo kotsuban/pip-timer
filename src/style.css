@@ -65,64 +65,7 @@ header {
   }
 }
 
-/* Custom */
-.time {
-  color: #0c0a09;
-  font-size: 10rem;
-  font-weight: bold;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-variant-numeric: tabular-nums;
-}
-
-.watch {
-  cursor: default;
-}
-
-.watch:focus {
-  border: none;
-  outline: none;
-}
-
-.btn-group {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.switch {
-  padding: 3px;
-  border-radius: 5px;
-  background-color: #ffffff;
-  box-shadow:
-    0px 0.5px 2.5px rgba(0, 0, 0, 0.3),
-    0px 0px 0px 0.5px rgba(0, 0, 0, 0.05);
-  display: flex;
-  gap: 3px;
-}
-
-.switch-item {
-  border-radius: 4px;
-  box-shadow: none;
-  padding: 4px 20px;
-  font-weight: bold;
-  color: #000000;
-}
-
 .switch-active {
   background-color: #000000;
   color: #ffffff;
-}
-
-@media (max-width: 375px) {
-  .switch-item {
-    padding: 4px 17px;
-  }
-}
-
-@media (max-width: 768px) {
-  .time {
-    font-size: 5rem;
-  }
 }

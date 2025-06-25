@@ -23,8 +23,8 @@ function hhmmssToMs(hhmmss: string) {
 }
 
 export function setupPlayWatchButton(watch: HTMLDivElement) {
-  const playButton = document.querySelector(".btn-play") as HTMLButtonElement;
-  const playIcon = document.querySelector(".img-play") as HTMLImageElement;
+  const playButton = document.querySelector("#btn-play") as HTMLButtonElement;
+  const playIcon = document.querySelector("#img-play") as HTMLImageElement;
 
   playButton.addEventListener("click", () => {
     Watch.isIntervalActive() ? stopWatch() : startWatch();
