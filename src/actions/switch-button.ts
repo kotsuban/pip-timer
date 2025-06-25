@@ -1,5 +1,5 @@
-import { INITIAL_TIME, Watch } from "../store";
-import { clearWatch } from "./clear-button";
+import { INITIAL_TIME, Watch } from "@/store";
+import { clearWatch } from "@/actions/clear-button";
 
 export function setupSwitchButton(watch: HTMLDivElement) {
   const { switchButtons, watchButton, timerButton } = getSwitchButtons();

@@ -1,15 +1,15 @@
-import "./style.css";
-import clearIcon from "./icons/clear.svg";
-import pipIcon from "./icons/pip.svg";
-import startIcon from "./icons/start.svg";
-import blackThemeIcon from "./icons/black-theme.svg";
+import "@/style.css";
+import clearIcon from "@/icons/clear.svg";
+import pipIcon from "@/icons/pip.svg";
+import startIcon from "@/icons/start.svg";
+import blackThemeIcon from "@/icons/black-theme.svg";
 
-import { setupOpenWatchInPipModeButton } from "./actions/pip-button";
-import { setupClearWatchButton } from "./actions/clear-button";
-import { setupPlayWatchButton } from "./actions/play-button";
-import { setupSwitchButton } from "./actions/switch-button";
+import { setupOpenWatchInPipModeButton } from "@/actions/pip-button";
+import { setupClearWatchButton } from "@/actions/clear-button";
+import { setupPlayWatchButton } from "@/actions/play-button";
+import { setupSwitchButton } from "@/actions/switch-button";
 
-import { INITIAL_TIME } from "./store";
+import { INITIAL_TIME } from "@/store";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <header>

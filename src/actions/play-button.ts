@@ -1,7 +1,7 @@
-import { Watch } from "../store";
+import { Watch } from "@/store";
 
-import stopIcon from "../icons/stop.svg";
-import startIcon from "../icons/start.svg";
+import stopIcon from "@/icons/stop.svg";
+import startIcon from "@/icons/start.svg";
 
 const ONE_SECOND = 1000;
 

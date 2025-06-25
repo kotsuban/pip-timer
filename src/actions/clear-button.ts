@@ -1,6 +1,6 @@
-import startIcon from "../icons/start.svg";
+import startIcon from "@/icons/start.svg";
 
-import { Watch, INITIAL_TIME } from "../store";
+import { Watch, INITIAL_TIME } from "@/store";
 
 export function clearWatch(watch: HTMLDivElement) {
   const playIcon = document.querySelector(".img-play") as HTMLImageElement;
