@@ -1,5 +1,5 @@
 import { msToHhMmSs, hhMmSsToMs } from "@/utils/time";
-import { clearContent } from "./utils/common";
+import { clearContent } from "@/utils/common";
 
 export type Mode = "WATCH" | "TIMER";
 

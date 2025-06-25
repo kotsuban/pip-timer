@@ -36,8 +36,13 @@ export function setupOpenTimeInPipModeButton(timeEl: HTMLDivElement) {
         left: 50%; 
         transform: translate(-50%, -50%); 
         font-variant-numeric: tabular-nums; 
-        cursor: default; 
-      }`;
+      }
+
+      .${styles.time}:focus {
+        border: none;
+        outline: none;
+      }
+      `;
 
     return style;
   };
