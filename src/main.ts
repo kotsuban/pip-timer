@@ -34,9 +34,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <button id="btn-pip" aria-label="Picture in Picture mode">
         <img alt="pip mode" src=${pipIcon} width=20 height=20 />
       </button>
-      <button id="btn-theme" aria-label="Toggle theme">
-        <img alt="toggle theme" src=${blackThemeIcon} width=20 height=20 />
-      </button>
+      <!-- TODO: theme switch -->
+      <!-- <button id="btn-theme" aria-label="Toggle theme"> -->
+      <!--   <img alt="toggle theme" src=${blackThemeIcon} width=20 height=20 /> -->
+      <!-- </button> -->
     </div>
   </header>
   <div class="${styles.time}" id="time">${INITIAL_TIME}</div>
