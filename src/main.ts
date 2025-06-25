@@ -8,6 +8,7 @@ import { setupClearTimeButton } from "@/actions/clear-button";
 import { setupPlayTimeButton } from "@/actions/play-button";
 import { setupSwitchButton } from "@/actions/switch-button";
 import { setupValidation } from "@/actions/validation";
+import { setupHotkeys } from "@/actions/hotkeys";
 
 import styles from "@/main.module.css";
 
@@ -39,10 +40,14 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     </div>
   </header>
   <div class="${styles.time}" id="time">${INITIAL_TIME}</div>
+  <footer>
+    W - watch mode. T - timer mode. Space - pause/play. X - reset.
+  </footer>
 `;
 
 const timeEl = document.querySelector("#time") as HTMLDivElement;
 
+setupHotkeys(timeEl);
 setupValidation(timeEl);
 setupClearTimeButton(timeEl);
 setupPlayTimeButton(timeEl);
