@@ -3,7 +3,6 @@ import { Watch } from "@/store";
 import stopIcon from "@/icons/stop.svg";
 import startIcon from "@/icons/start.svg";
 
-const ONE_SECOND = 1000;
 
 export function formatTime(ms: number) {
   const totalSeconds = Math.floor(ms / ONE_SECOND);
@@ -16,6 +15,7 @@ export function formatTime(ms: number) {
 
   return `${hours}:${minutes}:${seconds}`;
 }
+import { ONE_SECOND } from "@/constants";
 
 function hhmmssToMs(hhmmss: string) {
   const [seconds = 0, mins = 0, hours = 0] = hhmmss.split(":").reverse();

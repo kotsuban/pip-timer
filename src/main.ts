@@ -8,10 +8,11 @@ import { setupClearWatchButton } from "@/actions/clear-button";
 import { setupPlayWatchButton } from "@/actions/play-button";
 import { setupSwitchButton } from "@/actions/switch-button";
 
-import { INITIAL_TIME } from "@/store";
 import styles from "@/main.module.css";
 
 import "@/style.css";
+
+import { INITIAL_TIME } from "./constants";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <header>

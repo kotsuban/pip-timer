@@ -1,5 +1,3 @@
-export const INITIAL_TIME = "00:00:00";
-
 export let Watch = {
   mode: "WATCH",
   playing: false,
