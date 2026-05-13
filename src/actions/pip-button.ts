@@ -52,9 +52,3 @@ export async function openPipWindow(timeEl) {
 
   returnWatchToDOM(pipWindow);
 }
-
-export function setupOpenTimeInPipModeButton(timeEl: HTMLDivElement) {
-  const pipButton = document.querySelector("#btn-pip") as HTMLButtonElement;
-
-  pipButton.addEventListener("click", () => openPipWindow(timeEl));
-}
