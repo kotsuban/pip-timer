@@ -1,5 +1,3 @@
-import styles from "@/main.module.css";
-
 async function getPipWindow() {
   return (await (
     window as any
@@ -10,7 +8,7 @@ function getWatchStyle() {
   const style = document.createElement("style");
 
   style.textContent = `
-    .${styles.time} { 
+    #time { 
       font-family: brixel_acme_7_wide_xtnd, system-ui; 
       color: rgb(12, 10, 9); 
       font-size: 3rem; 
@@ -22,7 +20,7 @@ function getWatchStyle() {
       font-variant-numeric: tabular-nums; 
     }
 
-    .${styles.time}:focus {
+    #time:focus {
       border: none;
       outline: none;
     }
