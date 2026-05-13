@@ -3,6 +3,7 @@ import { setMode, time } from "@/store";
 import stopIcon from "@/icons/stop.svg";
 import startIcon from "@/icons/start.svg";
 import { getSwitchButtons } from "./switch-button";
+import { openPipWindow } from "@/actions/pip-button";
 
 export function setupHotkeys(timeEl: HTMLDivElement) {
   const playIcon = document.querySelector("#img-play") as HTMLImageElement;
@@ -40,6 +41,11 @@ export function setupHotkeys(timeEl: HTMLDivElement) {
       case "KeyX":
         e.preventDefault();
         time.clear(timeEl);
+        break;
+
+      case "KeyP":
+        e.preventDefault();
+        openPipWindow(timeEl);
         break;
 
       default:

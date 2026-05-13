@@ -1,58 +1,60 @@
 import styles from "@/main.module.css";
 
+async function getPipWindow() {
+  return (await (
+    window as any
+  ).documentPictureInPicture.requestWindow()) as Window;
+};
+
+function getWatchStyle() {
+  const style = document.createElement("style");
+
+  style.textContent = `
+    .${styles.time} { 
+      font-family: brixel_acme_7_wide_xtnd, system-ui; 
+      color: rgb(12, 10, 9); 
+      font-size: 3rem; 
+      font-weight: bold; 
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      font-variant-numeric: tabular-nums; 
+    }
+
+    .${styles.time}:focus {
+      border: none;
+      outline: none;
+    }
+  `;
+
+  return style;
+};
+
+function returnWatchToDOM(pipWindow: Window) {
+  pipWindow.addEventListener("pagehide", (e: PageTransitionEvent) => {
+    const target = e.target as Document;
+    const container = document.querySelector("#app") as HTMLDivElement;
+    const pipTime = target.querySelector("#time") as Element;
+    container.append(pipTime);
+  });
+};
+
+export async function openPipWindow(timeEl) {
+  if (!("documentPictureInPicture" in window)) {
+    alert("Picture in Picture mode is not supported in your browser.");
+  }
+
+  const pipWindow = await getPipWindow();
+
+  pipWindow.document.head.appendChild(getWatchStyle());
+  pipWindow.document.body.append(timeEl);
+
+  returnWatchToDOM(pipWindow);
+}
+
 export function setupOpenTimeInPipModeButton(timeEl: HTMLDivElement) {
   const pipButton = document.querySelector("#btn-pip") as HTMLButtonElement;
 
-  pipButton.addEventListener("click", async () => {
-    if (!("documentPictureInPicture" in window)) {
-      alert("Picture in Picture mode is not supported in your browser.");
-    }
-
-    const pipWindow = await getPipWindow();
-
-    pipWindow.document.head.appendChild(getWatchStyle());
-    pipWindow.document.body.append(timeEl);
-
-    returnWatchToDOM(pipWindow);
-  });
-
-  const getPipWindow = async () => {
-    return (await (
-      window as any
-    ).documentPictureInPicture.requestWindow()) as Window;
-  };
-
-  const getWatchStyle = () => {
-    const style = document.createElement("style");
-
-    style.textContent = `
-      .${styles.time} { 
-        font-family: system-ui; 
-        color: rgb(12, 10, 9); 
-        font-size: 3rem; 
-        font-weight: bold; 
-        position: absolute; 
-        top: 50%; 
-        left: 50%; 
-        transform: translate(-50%, -50%); 
-        font-variant-numeric: tabular-nums; 
-      }
-
-      .${styles.time}:focus {
-        border: none;
-        outline: none;
-      }
-      `;
-
-    return style;
-  };
-
-  const returnWatchToDOM = (pipWindow: Window) => {
-    pipWindow.addEventListener("pagehide", (e: PageTransitionEvent) => {
-      const target = e.target as Document;
-      const container = document.querySelector("#app") as HTMLDivElement;
-      const pipTime = target.querySelector("#time") as Element;
-      container.append(pipTime);
-    });
-  };
+  pipButton.addEventListener("click", () => openPipWindow(timeEl));
 }

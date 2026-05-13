@@ -42,7 +42,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   </header>
   <div class="${styles.time}" id="time">${INITIAL_TIME}</div>
   <footer>
-    W - watch mode. T - timer mode. Space - pause/play. X - reset.
+    W - watch mode. T - timer mode. Space - pause/play. X - reset. P - picture in picture.
   </footer>
 `;
 
