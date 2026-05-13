@@ -22,9 +22,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 `;
 
 const timeEl = document.querySelector("#time") as HTMLDivElement;
-let timeContent = ["0", "0", "0", "0", "0", "0"];
 
-function msToHhMmSs(ms: number) {
+function ms2HhMmSs(ms: number) {
   const totalSeconds = Math.floor(ms / ONE_SECOND);
   const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
   const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(
@@ -36,9 +35,17 @@ function msToHhMmSs(ms: number) {
   return `${hours}:${minutes}:${seconds}`;
 }
 
-function hhMmSsToMs(hhmmss: string) {
+function hhMmSs2Ms(hhmmss: string) {
   const [seconds = 0, mins = 0, hours = 0] = hhmmss.split(":").reverse();
   return ((+hours * 60 + +mins) * 60 + +seconds) * ONE_SECOND;
+}
+
+function hhMmSs2Arr(hhmmss: string) {
+  return hhmmss.split("").filter((e) => e !== ":")
+}
+
+function arr2HhMmSs(a: string[]) {
+  return `${a[0]}${a[1]}:${a[2]}${a[3]}:${a[4]}${a[5]}`;
 }
 
 function allowEdit(element: HTMLDivElement) {
@@ -54,12 +61,11 @@ function preventEdit(element: HTMLDivElement) {
 
 function reset() {
   timeEl.textContent = INITIAL_TIME;
-  timeContent = ["0", "0", "0", "0", "0", "0"];
   document.title = INITIAL_TIME;
-  cancelAnimationFrame(State.callbackId);
   State.startTime = 0;
   State.elapsedTime = 0;
   State.isActive = false;
+  cancelAnimationFrame(State.callbackId);
 }
 
 async function openPipWindow() {
@@ -103,6 +109,7 @@ timeEl.addEventListener("beforeinput", (e) => {
   const isInsert = e.inputType.startsWith("insert");
   const isDelete = e.inputType.startsWith("delete");
   const isNumber = /^\d*$/.test(e.data as string);
+  let content = hhMmSs2Arr(timeEl.textContent)
 
   if (!isNumber && isInsert) {
     e.preventDefault();
@@ -112,18 +119,18 @@ timeEl.addEventListener("beforeinput", (e) => {
   if (isDelete) {
     e.preventDefault();
 
-    timeContent.pop();
-    timeContent.unshift("0");
+    content.pop();
+    content.unshift("0");
   }
 
   if (isInsert && e.data) {
     e.preventDefault();
 
-    timeContent.shift();
-    timeContent.push(e.data);
+    content.shift();
+    content.push(e.data);
   }
 
-  timeEl.textContent = `${timeContent[0]}${timeContent[1]}:${timeContent[2]}${timeContent[3]}:${timeContent[4]}${timeContent[5]}`;
+  timeEl.textContent = arr2HhMmSs(content);
 });
 
 window.addEventListener("keypress", (e) => {
@@ -148,7 +155,7 @@ window.addEventListener("keypress", (e) => {
               return;
             }
 
-            const hhmmss = msToHhMmSs(remaining);
+            const hhmmss = ms2HhMmSs(remaining);
             timeEl.textContent = hhmmss;
             document.title = hhmmss;
             State.callbackId = requestAnimationFrame(update);
@@ -156,7 +163,7 @@ window.addEventListener("keypress", (e) => {
 
           preventEdit(timeEl);
           State.startTime = Date.now();
-          State.initialTime = hhMmSsToMs(timeEl.textContent as string);
+          State.initialTime = hhMmSs2Ms(timeEl.textContent as string);
           State.isActive = true;
           State.callbackId = requestAnimationFrame(update);
         }
@@ -164,7 +171,7 @@ window.addEventListener("keypress", (e) => {
           const update = () => {
             const now = Date.now();
             const delta = now - State.startTime;
-            const hhmmss = msToHhMmSs(State.elapsedTime + delta);
+            const hhmmss = ms2HhMmSs(State.elapsedTime + delta);
             timeEl.textContent = hhmmss;
             document.title = hhmmss;
             State.callbackId = requestAnimationFrame(update);
