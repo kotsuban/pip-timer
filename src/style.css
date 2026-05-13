@@ -1,5 +1,12 @@
+@font-face {
+  font-family: 'grixel_acme_7_wide_xtnd';
+  src: url('@/assets/acme_7_wide_xtnd.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: grixel_acme_7_wide_xtnd, system-ui;
   line-height: 1.5;
   font-weight: 400;
 
