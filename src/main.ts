@@ -78,7 +78,7 @@ async function openPipWindow() {
 
   style.textContent = `
     #time { 
-      font-family: brixel_acme_7_wide_xtnd, system-ui; 
+      font-family: monospace; 
       color: rgb(12, 10, 9); 
       font-size: 3rem; 
       font-weight: bold; 
