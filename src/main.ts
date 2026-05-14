@@ -73,7 +73,7 @@ async function openPipWindow() {
     alert("Picture in Picture mode is not supported in your browser.");
   }
 
-  const pipWindow = await window.documentPictureInPicture.requestWindow() as Window;
+  const pipWindow = await (window as any).documentPictureInPicture.requestWindow() as Window;
   const style = document.createElement("style");
 
   style.textContent = `
@@ -109,7 +109,7 @@ timeEl.addEventListener("beforeinput", (e) => {
   const isInsert = e.inputType.startsWith("insert");
   const isDelete = e.inputType.startsWith("delete");
   const isNumber = /^\d*$/.test(e.data as string);
-  let content = hhMmSs2Arr(timeEl.textContent)
+  let content = hhMmSs2Arr(timeEl.textContent as string)
 
   if (!isNumber && isInsert) {
     e.preventDefault();
